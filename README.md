@@ -42,3 +42,34 @@ First, we present the LSTM-based model used in this study, and detail the proced
 Next, we present the results of our experiments. For each of the factors under consideration - time lag, noise, and the number of sensors - we present an analysis of how changes in that factor influence the model's performance. This includes both quantitative results, such as changes in prediction accuracy, and qualitative observations about how the model's predictions change.
 
 Finally, we conclude with a summary of our findings, highlighting the key insights gained about the impact of time lag, noise, and the number of sensors on the performance of LSTM models in the context of sea-surface temperature prediction. We also discuss potential implications of these findings for future work in this area.
+
+### Theoretical Background
+**Long Short-Term Memory (LSTM) Models:**
+
+Long Short-Term Memory (LSTM) models are a special kind of Recurrent Neural Network (RNN) that were introduced by Hochreiter and Schmidhuber in 1997. Unlike traditional RNNs, LSTMs have an improved ability to capture long-term dependencies in sequence data, which makes them more suitable for tasks involving data where temporal dynamics play a critical role, such as in our case of sea-surface temperature prediction.
+
+LSTMs achieve this through a unique architectural element known as a 'cell state', which runs through the entire sequence, and gates that control the flow of information into and out of the cell state. These gates - the forget gate, input gate, and output gate - allow the model to selectively remember or forget information, which helps in capturing temporal dependencies over long periods.
+
+**Sea-Surface Temperature Prediction:**
+
+Sea-surface temperature prediction is a complex task due to the multitude of factors that influence sea-surface temperatures. These include atmospheric conditions, ocean currents, solar radiation, and more. Machine learning models, particularly those capable of handling sequence data like LSTM, have shown promise in capturing these complex dynamics and providing accurate predictions.
+
+However, the performance of these models can be influenced by several factors. One such factor is the time lag between observations, which determines how far back in time the model looks to make a prediction. A larger time lag may allow the model to capture longer-term patterns in the data, but it also increases the complexity of the model and the amount of data required for training.
+
+**Noise and Model Performance:**
+
+In real-world scenarios, data collected from sensors often comes with some level of noise. Noise can be thought of as random or unpredictable fluctuations in the data that do not reflect the underlying pattern or trend. When training a model, it is important to understand how the presence of noise in the data can impact the model's performance.
+
+High levels of noise can make it difficult for the model to discern the underlying patterns in the data, leading to poorer performance. On the other hand, a model trained on noisy data may be more robust to noise in future data it encounters. In this study, we introduce Gaussian noise to the sea-surface temperature data to investigate its impact on the performance of the LSTM model.
+
+**Number of Sensors and Model Performance:**
+
+The number of sensors used to collect data can also significantly impact the performance of a model. More sensors can provide a richer, more detailed view of the environment, potentially allowing the model to capture more complex patterns. However, more sensors also mean more data, which can increase the complexity of the model and the computational resources required for training and inference.
+
+In our study, we vary the number of sensors used to collect the sea-surface temperature data and analyze its impact on the LSTM model's performance. This can provide insights into the trade-off between the number of sensors and model performance, and help in determining an optimal number of sensors for this task.
+
+**Model Evaluation:**
+
+In this study, we evaluate the performance of the LSTM model using a commonly used metric in regression tasks - the Mean Squared Error (MSE). The MSE measures the average squared difference between the model's predictions and the actual values, providing an indication of the model's accuracy. Lower MSE values indicate better performance.
+
+It's important to note that in addition to quantitative metrics like MSE, qualitative analysis of the model's predictions can also provide useful insights. For instance, visualizing the model's predictions over time can reveal whether the model is able to capture the temporal dynamics of sea-surface temperature.
