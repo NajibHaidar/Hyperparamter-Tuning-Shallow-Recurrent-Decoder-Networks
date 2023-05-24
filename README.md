@@ -73,3 +73,12 @@ In our study, we vary the number of sensors used to collect the sea-surface temp
 In this study, we evaluate the performance of the LSTM model using a commonly used metric in regression tasks - the Mean Squared Error (MSE). The MSE measures the average squared difference between the model's predictions and the actual values, providing an indication of the model's accuracy. Lower MSE values indicate better performance.
 
 It's important to note that in addition to quantitative metrics like MSE, qualitative analysis of the model's predictions can also provide useful insights. For instance, visualizing the model's predictions over time can reveal whether the model is able to capture the temporal dynamics of sea-surface temperature.
+
+### Algorithm Implementation and Development
+
+### Computational Results
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/3dc3a136-2141-466a-bbc8-cc014eb76997)
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/66a1960e-27e9-4cc4-8b90-a78ce2aea0c2)
+
+
+### Summary and Conclusions
