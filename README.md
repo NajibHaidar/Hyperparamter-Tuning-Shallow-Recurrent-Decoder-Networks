@@ -76,6 +76,115 @@ It's important to note that in addition to quantitative metrics like MSE, qualit
 
 ### Algorithm Implementation and Development
 
+The run_experiment function forms the core of the modeling and evaluation process. Here's a comprehensive explanation of the steps involved in this function:
+
+```
+def run_experiment(num_sensors, lags, num_epochs, noise_std):
+```
+
+The function takes four parameters: num_sensors, which is the number of sensors in use, lags, the number of lagging time steps, num_epochs, the number of iterations over the dataset during training, and noise_std, the standard deviation of the Gaussian noise added to the input data.
+
+```
+load_X = load_data('SST')
+n = load_X.shape[0]
+m = load_X.shape[1]
+sensor_locations = np.random.choice(m, size=num_sensors, replace=False)
+```
+
+The load_data function is used to load the dataset, 'SST'. The shape of the data is recorded in n and m respectively. Then, sensor locations are randomly chosen from the available locations without replacement.
+
+```
+train_indices = np.random.choice(n - lags, size=1000, replace=False)
+mask = np.ones(n - lags)
+mask[train_indices] = 0
+valid_test_indices = np.arange(0, n - lags)[np.where(mask!=0)[0]]
+valid_indices = valid_test_indices[::2]
+test_indices = valid_test_indices[1::2]
+```
+
+A training set of 1000 samples is randomly selected, with a mask applied to ensure these samples are not used for validation or testing. The remaining data is split into validation and test sets by taking alternate indices.
+
+```
+sc = MinMaxScaler()
+sc = sc.fit(load_X[train_indices])
+transformed_X = sc.transform(load_X)
+```
+
+The data is scaled using the MinMaxScaler, which scales the data to a specified range, typically between zero and one. It fits the scaler on the training data and transforms the whole dataset.
+
+The following block of code generates input sequences for a SHRED model and adds Gaussian noise to the input data:
+
+```
+all_data_in = np.zeros((n - lags, lags, num_sensors))
+for i in range(len(all_data_in)):
+    all_data_in[i] = transformed_X[i:i+lags, sensor_locations]
+
+# Add Gaussian noise to the input data
+noise = np.random.normal(0, noise_std, all_data_in.shape)
+all_data_in += noise
+```
+
+A tensor of zeros is initialized with the shape (n - lags, lags, num_sensors) to store the input sequences. Each sequence consists of lagged values for randomly selected sensors from the scaled data. Gaussian noise, with mean zero and standard deviation specified by noise_std, is then added to these sequences.
+
+```
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+```
+
+This line determines whether a CUDA-capable GPU is available for computation. If so, it sets the device to 'cuda', otherwise it uses the CPU ('cpu').
+
+```
+train_data_in = torch.tensor(all_data_in[train_indices], dtype=torch.float32).to(device)
+valid_data_in = torch.tensor(all_data_in[valid_indices], dtype=torch.float32).to(device)
+test_data_in = torch.tensor(all_data_in[test_indices], dtype=torch.float32).to(device)
+```
+
+These lines create PyTorch tensorsquote("The run_experiment function forms", "PyTorch tensors") from the input data for training, validation, and testing. They are moved to the appropriate device (CPU or GPU) for computation.
+
+```
+train_data_out = torch.tensor(transformed_X[train_indices + lags - 1], dtype=torch.float32).to(device)
+valid_data_out = torch.tensor(transformed_X[valid_indices + lags - 1], dtype=torch.float32).to(device)
+test_data_out = torch.tensor(transformed_X[test_indices + lags - 1], dtype=torch.float32).to(device)
+```
+
+Similarly, tensors for the target values (corresponding to the last timestep of each sequence) are created for training, validation, and testing.
+
+```
+train_dataset = TimeSeriesDataset(train_data_in, train_data_out)
+valid_dataset = TimeSeriesDataset(valid_data_in, valid_data_out)
+test_dataset = TimeSeriesDataset(test_data_in, test_data_out)
+```
+
+The input and target tensors are wrapped into PyTorch Dataset objects for efficient data loading and batching.
+
+```
+shred = models.SHRED(num_sensors, m, hidden_size=64, hidden_layers=2, l1=350, l2=400, dropout=0.1).to(device)
+```
+
+A SHRED model is initialized with the given parameters and moved to the appropriate device for computation.
+
+```
+validation_errors = models.fit(shred, train_dataset, valid_dataset, batch_size=64, num_epochs=num_epochs, lr=1e-3, verbose=True, patience=5)
+```
+
+The SHRED model is trained on the training dataset using the specified number of epochs, learning rate, and other parameters. The model's performance is evaluated on the validation dataset at each epoch, and training stops early if the validation performance does not improve for a specified number of epochs ('patience').
+
+```
+test_recons = sc.inverse_transform(shred(test_dataset.X).detach().cpu().numpy())
+test_ground_truth = sc.inverse_transform(test_dataset.Y.detach().cpu().numpy())
+test_performance = np.linalg.norm(test_recons - test_ground_truth) / np.linalg.norm(test_ground_truth)
+print(test_performance)
+```
+
+Finally, the trained SHRED model is used to make predictions on the test dataset. The predictions are inverse-transformed back to the original scale, and the model's performance is evaluated by comparing these predictions to the ground truth data. The performance metric used here is the relative Euclidean norm of the prediction error.
+
+```
+return shred, validation_errors, test_performance
+```
+
+The function returns the trained SHRED model, the history of validation errors during training, and the final test performance.
+
+This comprehensive run_experiment function encapsulates the process of preparing the data, setting up the model, training the model, and evaluating its performance. By abstracting these steps into a single function, it enables streamlined and consistent experimentation with different parameters and configurations.
+
 ### Computational Results
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/3dc3a136-2141-466a-bbc8-cc014eb76997)
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/66a1960e-27e9-4cc4-8b90-a78ce2aea0c2)
