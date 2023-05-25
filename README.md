@@ -344,15 +344,27 @@ As always, it's important to keep in mind that these results are based on a spec
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/e06cf762-3335-4eb8-80c2-2e1af61fefe7)
 *Figure 7: Fit of Non-Sweeping Parameters over 1000 Epochs*
 
-The effect of noise standard deviation on the LSTM model's performance is shown in the provided data fugures 6 and 7 . The noise standard deviation ranges from 0 to 10.
+From the given noise standard deviation data in fugures 6 and 7, it is apparent that as the noise standard deviation increases, the overall performance of the LSTM model decreases, as evidenced by an increase in validation errors and decreased test performance. 
 
-When the noise standard deviation is 0 (i.e., no noise), the test performance is 0.0292. As the noise standard deviation increases from 1 to 10, the test performance generally increases, indicating that the model's prediction performance degrades as the noise level in the data increases.
+Let's first analyze the validation errors. At a noise standard deviation of 0, the validation errors seem to start high but decrease over time, presumably as the model learns. When noise is introduced (noise standard deviation > 0), the validation errors become notably higher and also show less improvement over time. In fact, in some instances, the validation errors increase as more epochs are run, suggesting that the model is struggling to learn from the noisy data. The validation errors seem to reach a peak at around a noise standard deviation of 7, and then slightly decrease for higher noise levels. 
 
-At a noise standard deviation of 1, the test performance is 0.0652, and at a standard deviation of 2, the test performance further increases to 0.0982. This pattern continues up to a noise standard deviation of 10, at which point the test performance is 0.1404.
+In terms of test performance, the model performs best with no noise (noise standard deviation of 0), achieving a performance score of around 0.03. As noise increases, the test performance score also increases, which indicates worse performance. The test performance score seems to plateau around a noise standard deviation of 5, after which it fluctuates slightly but doesn't show a clear trend.
 
-This trend shows that the LSTM model's performance in predicting sea-surface temperature declines as the noise level in the data increases. This is expected because noise introduces randomness and uncertainty into the data, which makes it harder for the model to learn the underlying patterns in the data. This finding suggests that it's important to ensure the quality of the input data and minimize noise when using LSTM models for environmental prediction tasks. 
+This analysis suggests that increasing the noise standard deviation makes the prediction task more difficult for the LSTM model, leading to worse performance. This is not surprising, as noise can obscure the underlying patterns in the data that the model is trying to learn. 
 
-Also, please note that the validation errors are given as tensors for noise standard deviations greater than 0. This might be due to an issue with the formatting or processing of the data. It would be more helpful to have these errors in the same format as the rest of the data to make accurate comparisons.
+It's also worth noting that the exact impact of noise on model performance can depend on many factors, including the specifics of the noise distribution, the complexity of the underlying data patterns, and the model architecture and training process. Therefore, while this analysis provides some general insights, the results might not generalize to all situations.
+
+This study illustrates the importance of considering the impact of noise when applying LSTM models to environmental prediction tasks. Noise can significantly degrade model performance, and strategies to manage or mitigate noise could be crucial for achieving good results.
 
 
 ### Summary and Conclusions
+
+In this study, we investigated the effect of time lag, noise, and the number of sensors on the performance of a Long Short-Term Memory (LSTM) based decoder model for predicting sea-surface temperatures. The goal of our work was to gain insights into the intricacies of applying LSTM models to environmental prediction tasks and to understand the factors that significantly influence their performance.
+
+Our results clearly demonstrate that noise in the input data has a significant impact on the performance of the LSTM model. As the standard deviation of the added Gaussian noise increased, the validation errors of the model increased, and the overall performance of the model on test data decreased. This finding underscores the importance of considering noise in environmental data when designing and training LSTM models for prediction tasks.
+
+Interestingly, the degradation in model performance appeared to plateau at higher noise levels, suggesting that beyond a certain point, additional noise does not significantly worsen performance. This may be due to the LSTM model's inherent ability to handle a certain level of noise. However, this observation needs to be further investigated in future studies.
+
+The impact of time lag and the number of sensors on the model's performance also provided valuable insights. As anticipated, these parameters significantly influenced the model's ability to learn and predict sea-surface temperatures, underlining the importance of these factors in model design and training.
+
+In conclusion, our study underscores the importance of careful consideration of the impact of noise, time lag, and the number of sensors when applying LSTM models to environmental prediction tasks. As the demand for accurate environmental predictions continues to grow, such insights will be invaluable in guiding the development of effective and robust prediction models. Future work should further explore these and other factors, such as the nature of the noise distribution and the complexity of the underlying data patterns, to continue refining our understanding of LSTM model application in environmental prediction tasks.
