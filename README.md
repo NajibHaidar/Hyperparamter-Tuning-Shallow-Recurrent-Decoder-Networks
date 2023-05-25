@@ -185,6 +185,118 @@ The function returns the trained SHRED model, the history of validation errors d
 
 This comprehensive run_experiment function encapsulates the process of preparing the data, setting up the model, training the model, and evaluating its performance. By abstracting these steps into a single function, it enables streamlined and consistent experimentation with different parameters and configurations.
 
+
+```
+num_sensors = 3
+lags = 52
+num_epochs = 1000
+noise_std = 0
+
+shred_OG, validation_errors_OG, test_performance_OG = run_experiment(num_sensors, lags, num_epochs, noise_std)
+```
+
+In this block of code, the run_experiment function is called with these parameters to train a SHRED model. The function returns a trained model (shred_OG), the validation errors at each epoch (validation_errors_OG), and the final performance of the model on the test set (test_performance_OG).
+
+```
+import pandas as pd
+
+def parse_file(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+
+    data = []
+    for line in lines:
+        if "Training epoch" in line:
+            epoch = int(line.split()[-1])
+        elif "Error" in line:
+            error = float(line.split()[-1].replace("tensor(", "").replace(")", ""))
+            data.append({'epoch': epoch, 'error': error})
+
+    return pd.DataFrame(data)
+
+df = parse_file("training_result.txt")
+```
+
+Next, a helper function parse_file is defined to parse the output of the training process from a text file. This function reads the file line by line, and for each line that contains "Training epoch", it extracts the epoch number. For each line that contains "Error", it extracts the error value. Finally, this function is used to parse the file "training_result.txt" into a pandas DataFrame for further analysis.
+
+This DataFrame df now contains a record of the training process, with each row representing an epoch and columns for the epoch number and the error at that epoch. This data can be used for various purposes, such as tracking the training progress, diagnosing issues with the training process, and visualizing the training and validation errors over time. This method was only used for the experiment with unchanging variables in order to determine where the error seems to fade. In other experiments, we used dictionaries instead as we will see shortly.
+
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/77052126-75dd-4900-8853-08dbf4915735)
+*Figure 1: Fit of Non-Sweeping Parameters over 1000 Epochs
+
+From figure 1, we deduced that we could save plenty of training time by only triaining the data until 200 epochs (1/5th the original 1000 epochs). This is possible because it is evident that the error seems to barely change from that point forward. 
+
+Then, we conducted a series of experiments with the SHRED model, varying the amount of lag in the input data. The lags_range is set to a list of values ranging from 0 to 260. These values represent the number of previous time steps to be considered while making a prediction in the model. The number of sensors (num_sensors), the number of training epochs (num_epochs), and the standard deviation of the Gaussian noise (noise_std) added to the input data are set as constants for all experiments.
+
+```
+num_sensors = 3
+lags_range = [0, 1, 5, 10, 15, 20, 30, 40, 50, 60, 75, 104, 156, 208, 260]
+num_epochs = 200
+noise_std = 0
+```
+
+Two dictionaries, validation_errors_dict_lag and test_performance_dict_lag, are initialized to store the validation errors and test performance, respectively, for each value of lag. Each key-value pair in these dictionaries corresponds to a specific experiment, with the key being the amount of lag and the value being the validation errors or test performance.
+
+```
+validation_errors_dict_lag = {}
+test_performance_dict_lag = {}
+```
+
+A loop is then used to run an experiment for each value of lag in lags_range. In each iteration of the loop, the run_experiment function is called with the current value of lag, and the resulting SHRED model, validation errors, and test performance are stored.
+
+```
+for lags in lags_range:
+    print(f"Running experiment with {lags} lag...")
+    shred_lag, validation_errors_lag, test_performance_lag = run_experiment(num_sensors, lags, num_epochs, noise_std)
+
+    # Store validation errors and test performance
+    validation_errors_dict_lag[lags] = validation_errors_lag
+    test_performance_dict_lag[lags] = test_performance_lag
+```
+
+After running this code, validation_errors_dict_lag and test_performance_dict_lag will contain the results of all experiments, which can be used for further analysis, such as identifying the optimal amount of lag for the SHRED model.
+
+
+This same exact procedure was then repeated for varying values of num_sensors and noise_std. Of course, each case had its own dedicated dictionary:
+
+```
+num_sensors_range = range(1, 11)  # change this to the range you want
+lags = 52
+num_epochs = 200
+noise_std = 0
+
+# Dictionaries to store validation errors and test performance for each experiment
+validation_errors_dict_sensor = {}
+test_performance_dict_sensor = {}
+
+for num_sensors in num_sensors_range:
+    print(f"Running experiment with {num_sensors} sensors...")
+    shred_sensor, validation_errors_sensor, test_performance_sensor = run_experiment(num_sensors, lags, num_epochs, noise_std)
+
+    # Store validation errors and test performance
+    validation_errors_dict_sensor[num_sensors] = validation_errors_sensor
+    test_performance_dict_sensor[num_sensors] = test_performance_sensor
+```
+
+```
+noise_range = range(0, 11)  # change this to the range you want
+num_sensors = 3
+lags = 52
+num_epochs = 200
+
+# Dictionaries to store validation errors and test performance for each experiment
+validation_errors_dict_noise = {}
+test_performance_dict_noise = {}
+
+for noise_std in noise_range:
+    print(f"Running experiment with noise standard deviation {noise_std}...")
+    shred_noise, validation_errors_noise, test_performance_noise = run_experiment(num_sensors, lags, num_epochs, noise_std)
+
+    # Store validation errors and test performance
+    validation_errors_dict_noise[noise_std] = validation_errors_noise
+    test_performance_dict_noise[noise_std] = test_performance_noise
+```
+
 ### Computational Results
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/3dc3a136-2141-466a-bbc8-cc014eb76997)
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/66a1960e-27e9-4cc4-8b90-a78ce2aea0c2)
