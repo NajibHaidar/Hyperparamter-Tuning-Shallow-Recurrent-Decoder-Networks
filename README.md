@@ -79,6 +79,12 @@ It's important to note that in addition to quantitative metrics like MSE, qualit
 ### Computational Results
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/3dc3a136-2141-466a-bbc8-cc014eb76997)
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/66a1960e-27e9-4cc4-8b90-a78ce2aea0c2)
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/d13ec847-25d6-45e4-9a70-d59f9fe7ac5e)
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/03bb5be4-8ad3-4592-9048-868d6f2fc509)
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/ca1dea00-dbda-4bde-a354-6565ab132b30)
+![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/e06cf762-3335-4eb8-80c2-2e1af61fefe7)
+
+
 
 
 ### Summary and Conclusions
