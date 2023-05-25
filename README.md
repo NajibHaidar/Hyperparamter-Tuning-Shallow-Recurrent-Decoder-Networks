@@ -222,7 +222,7 @@ Next, a helper function parse_file is defined to parse the output of the trainin
 This DataFrame df now contains a record of the training process, with each row representing an epoch and columns for the epoch number and the error at that epoch. This data can be used for various purposes, such as tracking the training progress, diagnosing issues with the training process, and visualizing the training and validation errors over time. This method was only used for the experiment with unchanging variables in order to determine where the error seems to fade. In other experiments, we used dictionaries instead as we will see shortly.
 
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/77052126-75dd-4900-8853-08dbf4915735)
-*Figure 1: Fit of Non-Sweeping Parameters over 1000 Epochs
+*Figure 1: Fit of Non-Sweeping Parameters over 1000 Epochs*
 
 From figure 1, we deduced that we could save plenty of training time by only triaining the data until 200 epochs (1/5th the original 1000 epochs). This is possible because it is evident that the error seems to barely change from that point forward. 
 
@@ -299,13 +299,60 @@ for noise_std in noise_range:
 
 ### Computational Results
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/3dc3a136-2141-466a-bbc8-cc014eb76997)
+*Figure 2: Fit of Non-Sweeping Parameters over 1000 Epochs*
+
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/66a1960e-27e9-4cc4-8b90-a78ce2aea0c2)
+*Figure 3: Fit of Non-Sweeping Parameters over 1000 Epochs*
+
+Anyalzing the sensor data in figures 2 and 3, we can observe that the test performance (which represents the error of the model on unseen data) generally decreases as the number of sensors increases, indicating that the model's performance improves with more sensors. This trend suggests that using more sensors allows the model to capture more relevant features, thereby improving its predictive accuracy.
+
+However, it's important to note that the improvement in performance tends to diminish as the number of sensors increases. For instance, the decrease in test performance from 1 sensor to 2 sensors is larger than the decrease from 9 sensors to 10 sensors. This pattern suggests that there may be diminishing returns to adding more sensors.
+
+We can also look at the validation errors for each model. The validation error is a measure of the model's performance on a held-out subset of the training data. By looking at the validation errors, we can get an idea of how well the model is likely to perform on unseen data.
+
+We can see that the minimum validation error generally decreases as the number of sensors increases. This trend is consistent with the trend in the test performance, further supporting the conclusion that the model's performance improves with more sensors.
+
+However, the spread of validation errors seems to increase with the number of sensors. This spread may suggest that the choice of hyperparameters becomes more important as the number of sensors increases. In other words, with more sensors, there may be a greater risk of overfitting the model to the training data, which would result in poor performance on unseen data. Therefore, careful tuning of the model's hyperparameters is likely to be especially important when using a large number of sensors.
+
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/d13ec847-25d6-45e4-9a70-d59f9fe7ac5e)
+*Figure 4: Fit of Non-Sweeping Parameters over 1000 Epochs*
+
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/ee37d0c7-52b5-40e3-af7f-128bc12896ae)
+*Figure 5: Fit of Non-Sweeping Parameters over 1000 Epochs*
+
+From the lag data in figures 4 and 5, we can see that when the amount of lag is 0, the model cannot produce any valid outputs, resulting in NaN errors. This is likely because the LSTM model needs at least some lag to learn temporal dependencies in the data, and with zero lag, it essentially becomes a simple feedforward neural network. 
+
+Starting from a lag of 1, the model is able to learn and make predictions, but the test performance is relatively poor. As the amount of lag increases, the test performance generally improves, which suggests that more lag allows the model to capture longer-term temporal dependencies in the data, improving its ability to make predictions.
+
+However, the trend isn't perfectly smooth. The test performance seems to reach a minimum around a lag of 15, then increases slightly before decreasing again around a lag of 40-50, and then finally increases again. These variations could be due to random fluctuations in the training process, or they could suggest that there's a complex relationship between the amount of lag and the model's performance. 
+
+For example, it's possible that a moderate amount of lag allows the model to capture the relevant temporal dependencies without overwhelming it with too much information, while a large amount of lag could introduce additional complexity that the model struggles to handle. On the other hand, too little lag might not provide enough temporal context for the model to make accurate predictions.
+
+Looking at the validation errors, we can see a similar trend. The minimum validation error generally decreases as the amount of lag increases, suggesting that more lag improves the model's performance on the validation set. However, the spread of validation errors also seems to increase with more lag, suggesting that the choice of hyperparameters becomes more important as the amount of lag increases.
+
+Overall, these results suggest that there's a trade-off when choosing the amount of lag for the LSTM model. Too little lag might not provide enough temporal context for the model to make accurate predictions, but too much lag might introduce additional complexity that the model struggles to handle. Therefore, the optimal amount of lag likely depends on the specific characteristics of the data and the task. 
+
+In this case, given the noise level and the number of sensors used, a lag in the range of 15 to 50 seems to result in the best performance. Beyond this range, the performance does not seem to improve significantly and in some cases even deteriorates slightly. It would be important to note that this optimum lag range might change if other parameters such as the number of sensors or the noise level are altered. 
+
+It would also be worth exploring whether different preprocessing or feature engineering techniques could help the model handle larger amounts of lag more effectively. For example, it could be beneficial to explore techniques for dimensionality reduction, sequence compression, or more advanced techniques for handling temporal data. 
+
+As always, it's important to keep in mind that these results are based on a specific model and a specific dataset, so the generalizability of these conclusions to other models or datasets may be limited.
+
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/ca1dea00-dbda-4bde-a354-6565ab132b30)
+*Figure 6: Fit of Non-Sweeping Parameters over 1000 Epochs*
+
 ![image](https://github.com/NajibHaidar/Hyperparamter-Tuning-Shallow-Recurrent-Decoder-Networks/assets/116219100/e06cf762-3335-4eb8-80c2-2e1af61fefe7)
+*Figure 7: Fit of Non-Sweeping Parameters over 1000 Epochs*
 
+The effect of noise standard deviation on the LSTM model's performance is shown in the provided data fugures 6 and 7 . The noise standard deviation ranges from 0 to 10.
 
+When the noise standard deviation is 0 (i.e., no noise), the test performance is 0.0292. As the noise standard deviation increases from 1 to 10, the test performance generally increases, indicating that the model's prediction performance degrades as the noise level in the data increases.
+
+At a noise standard deviation of 1, the test performance is 0.0652, and at a standard deviation of 2, the test performance further increases to 0.0982. This pattern continues up to a noise standard deviation of 10, at which point the test performance is 0.1404.
+
+This trend shows that the LSTM model's performance in predicting sea-surface temperature declines as the noise level in the data increases. This is expected because noise introduces randomness and uncertainty into the data, which makes it harder for the model to learn the underlying patterns in the data. This finding suggests that it's important to ensure the quality of the input data and minimize noise when using LSTM models for environmental prediction tasks. 
+
+Also, please note that the validation errors are given as tensors for noise standard deviations greater than 0. This might be due to an issue with the formatting or processing of the data. It would be more helpful to have these errors in the same format as the rest of the data to make accurate comparisons.
 
 
 ### Summary and Conclusions
