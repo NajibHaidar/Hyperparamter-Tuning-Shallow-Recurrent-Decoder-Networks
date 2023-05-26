@@ -1,0 +1,103 @@
+Training epoch 1
+Error tensor(0.4717)
+Training epoch 20
+Error tensor(0.2243)
+Training epoch 40
+Error tensor(0.2154)
+Training epoch 60
+Error tensor(0.2072)
+Training epoch 80
+Error tensor(0.2043)
+Training epoch 100
+Error tensor(0.2009)
+Training epoch 120
+Error tensor(0.1971)
+Training epoch 140
+Error tensor(0.1899)
+Training epoch 160
+Error tensor(0.1707)
+Training epoch 180
+Error tensor(0.1593)
+Training epoch 200
+Error tensor(0.1521)
+Training epoch 220
+Error tensor(0.1457)
+Training epoch 240
+Error tensor(0.1395)
+Training epoch 260
+Error tensor(0.1376)
+Training epoch 280
+Error tensor(0.1314)
+Training epoch 300
+Error tensor(0.1292)
+Training epoch 320
+Error tensor(0.1244)
+Training epoch 340
+Error tensor(0.1253)
+Training epoch 360
+Error tensor(0.1217)
+Training epoch 380
+Error tensor(0.1201)
+Training epoch 400
+Error tensor(0.1180)
+Training epoch 420
+Error tensor(0.1165)
+Training epoch 440
+Error tensor(0.1159)
+Training epoch 460
+Error tensor(0.1158)
+Training epoch 480
+Error tensor(0.1146)
+Training epoch 500
+Error tensor(0.1164)
+Training epoch 520
+Error tensor(0.1126)
+Training epoch 540
+Error tensor(0.1151)
+Training epoch 560
+Error tensor(0.1150)
+Training epoch 580
+Error tensor(0.1176)
+Training epoch 600
+Error tensor(0.1123)
+Training epoch 620
+Error tensor(0.1118)
+Training epoch 640
+Error tensor(0.1122)
+Training epoch 660
+Error tensor(0.1111)
+Training epoch 680
+Error tensor(0.1127)
+Training epoch 700
+Error tensor(0.1112)
+Training epoch 720
+Error tensor(0.1117)
+Training epoch 740
+Error tensor(0.1098)
+Training epoch 760
+Error tensor(0.1106)
+Training epoch 780
+Error tensor(0.1104)
+Training epoch 800
+Error tensor(0.1095)
+Training epoch 820
+Error tensor(0.1095)
+Training epoch 840
+Error tensor(0.1107)
+Training epoch 860
+Error tensor(0.1089)
+Training epoch 880
+Error tensor(0.1093)
+Training epoch 900
+Error tensor(0.1087)
+Training epoch 920
+Error tensor(0.1097)
+Training epoch 940
+Error tensor(0.1080)
+Training epoch 960
+Error tensor(0.1084)
+Training epoch 980
+Error tensor(0.1083)
+Training epoch 1000
+Error tensor(0.1091)
+0.01978777

@@ -1,0 +1,144 @@
+Running experiment with noise standard deviation 0.0
+Training epoch 1
+Error tensor(0.4741)
+Training epoch 20
+Error tensor(0.2276)
+Training epoch 40
+Error tensor(0.2165)
+Training epoch 60
+Error tensor(0.2139)
+Training epoch 80
+Error tensor(0.2073)
+Training epoch 100
+Error tensor(0.1987)
+Training epoch 120
+Error tensor(0.1934)
+Training epoch 140
+Error tensor(0.1854)
+Training epoch 160
+Error tensor(0.1817)
+Training epoch 180
+Error tensor(0.1744)
+Training epoch 200
+Error tensor(0.1690)
+0.030042393
+Running experiment with noise standard deviation 0.01
+Training epoch 1
+Error tensor(0.4758)
+Training epoch 20
+Error tensor(0.2507)
+Training epoch 40
+Error tensor(0.2191)
+Training epoch 60
+Error tensor(0.2160)
+Training epoch 80
+Error tensor(0.2166)
+Training epoch 100
+Error tensor(0.2074)
+Training epoch 120
+Error tensor(0.2024)
+Training epoch 140
+Error tensor(0.1946)
+Training epoch 160
+Error tensor(0.1984)
+Training epoch 180
+Error tensor(0.1882)
+Training epoch 200
+Error tensor(0.1706)
+0.03012426
+Running experiment with noise standard deviation 0.02
+Training epoch 1
+Error tensor(0.4768)
+Training epoch 20
+Error tensor(0.2469)
+Training epoch 40
+Error tensor(0.2172)
+Training epoch 60
+Error tensor(0.2163)
+Training epoch 80
+Error tensor(0.2153)
+Training epoch 100
+Error tensor(0.2151)
+Training epoch 120
+Error tensor(0.2087)
+Training epoch 140
+Error tensor(0.2080)
+Training epoch 160
+Error tensor(0.1877)
+Training epoch 180
+Error tensor(0.1799)
+Training epoch 200
+Error tensor(0.1773)
+0.03212966
+Running experiment with noise standard deviation 0.03
+Training epoch 1
+Error tensor(0.4729)
+Training epoch 20
+Error tensor(0.2255)
+Training epoch 40
+Error tensor(0.2185)
+Training epoch 60
+Error tensor(0.2173)
+Training epoch 80
+Error tensor(0.2158)
+Training epoch 100
+Error tensor(0.2139)
+Training epoch 120
+Error tensor(0.2090)
+Training epoch 140
+Error tensor(0.1983)
+Training epoch 160
+Error tensor(0.1946)
+Training epoch 180
+Error tensor(0.1726)
+Training epoch 200
+Error tensor(0.1617)
+0.029329382
+Running experiment with noise standard deviation 0.04
+Training epoch 1
+Error tensor(0.4706)
+Training epoch 20
+Error tensor(0.2238)
+Training epoch 40
+Error tensor(0.2175)
+Training epoch 60
+Error tensor(0.2094)
+Training epoch 80
+Error tensor(0.2043)
+Training epoch 100
+Error tensor(0.1981)
+Training epoch 120
+Error tensor(0.1932)
+Training epoch 140
+Error tensor(0.1810)
+Training epoch 160
+Error tensor(0.1774)
+Training epoch 180
+Error tensor(0.1695)
+Training epoch 200
+Error tensor(0.1643)
+0.02986258
+Running experiment with noise standard deviation 0.05
+Training epoch 1
+Error tensor(0.4687)
+Training epoch 20
+Error tensor(0.2225)
+Training epoch 40
+Error tensor(0.2186)
+Training epoch 60
+Error tensor(0.2167)
+Training epoch 80
+Error tensor(0.2112)
+Training epoch 100
+Error tensor(0.2056)
+Training epoch 120
+Error tensor(0.2014)
+Training epoch 140
+Error tensor(0.1988)
+Training epoch 160
+Error tensor(0.1948)
+Training epoch 180
+Error tensor(0.1869)
+Training epoch 200
+Error tensor(0.1823)
+0.031810153

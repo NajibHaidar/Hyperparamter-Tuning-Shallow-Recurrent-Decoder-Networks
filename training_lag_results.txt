@@ -1,0 +1,264 @@
+Running experiment with 1 lag...
+Training epoch 1
+Error tensor(0.5528)
+Training epoch 20
+Error tensor(0.2782)
+Training epoch 40
+Error tensor(0.2770)
+Training epoch 60
+Error tensor(0.2644)
+Training epoch 80
+Error tensor(0.2632)
+Training epoch 100
+Error tensor(0.2631)
+Training epoch 120
+Error tensor(0.2554)
+Training epoch 140
+Error tensor(0.2531)
+Training epoch 160
+Error tensor(0.2538)
+Training epoch 180
+Error tensor(0.2546)
+Training epoch 200
+Error tensor(0.2567)
+0.050466068
+Running experiment with 5 lag...
+Training epoch 1
+Error tensor(0.4875)
+Training epoch 20
+Error tensor(0.2531)
+Training epoch 40
+Error tensor(0.2315)
+Training epoch 60
+Error tensor(0.2265)
+Training epoch 80
+Error tensor(0.2250)
+Training epoch 100
+Error tensor(0.2240)
+Training epoch 120
+Error tensor(0.2225)
+Training epoch 140
+Error tensor(0.2217)
+Training epoch 160
+Error tensor(0.2214)
+Training epoch 180
+Error tensor(0.2201)
+Training epoch 200
+Error tensor(0.2193)
+0.035692476
+Running experiment with 10 lag...
+Training epoch 1
+Error tensor(0.4773)
+Training epoch 20
+Error tensor(0.2439)
+Training epoch 40
+Error tensor(0.2313)
+Training epoch 60
+Error tensor(0.2235)
+Training epoch 80
+Error tensor(0.2172)
+Training epoch 100
+Error tensor(0.2139)
+Training epoch 120
+Error tensor(0.2102)
+Training epoch 140
+Error tensor(0.2041)
+Training epoch 160
+Error tensor(0.2002)
+Training epoch 180
+Error tensor(0.1976)
+Training epoch 200
+Error tensor(0.1944)
+0.03452153
+Running experiment with 15 lag...
+Training epoch 1
+Error tensor(0.4783)
+Training epoch 20
+Error tensor(0.2305)
+Training epoch 40
+Error tensor(0.2210)
+Training epoch 60
+Error tensor(0.2187)
+Training epoch 80
+Error tensor(0.2142)
+Training epoch 100
+Error tensor(0.2069)
+Training epoch 120
+Error tensor(0.2035)
+Training epoch 140
+Error tensor(0.1990)
+Training epoch 160
+Error tensor(0.1929)
+Training epoch 180
+Error tensor(0.1861)
+Training epoch 200
+Error tensor(0.1786)
+0.03169374
+Running experiment with 20 lag...
+Training epoch 1
+Error tensor(0.4781)
+Training epoch 20
+Error tensor(0.2341)
+Training epoch 40
+Error tensor(0.2196)
+Training epoch 60
+Error tensor(0.2131)
+Training epoch 80
+Error tensor(0.2100)
+Training epoch 100
+Error tensor(0.2087)
+Training epoch 120
+Error tensor(0.2000)
+Training epoch 140
+Error tensor(0.1963)
+Training epoch 160
+Error tensor(0.1821)
+Training epoch 180
+Error tensor(0.1725)
+Training epoch 200
+Error tensor(0.1611)
+0.029312965
+Running experiment with 30 lag...
+Training epoch 1
+Error tensor(0.4837)
+Training epoch 20
+Error tensor(0.2293)
+Training epoch 40
+Error tensor(0.2206)
+Training epoch 60
+Error tensor(0.2193)
+Training epoch 80
+Error tensor(0.2172)
+Training epoch 100
+Error tensor(0.2123)
+Training epoch 120
+Error tensor(0.2041)
+Training epoch 140
+Error tensor(0.1915)
+Training epoch 160
+Error tensor(0.1823)
+Training epoch 180
+Error tensor(0.1746)
+Training epoch 200
+Error tensor(0.1682)
+0.03002542
+Running experiment with 40 lag...
+Training epoch 1
+Error tensor(0.4795)
+Training epoch 20
+Error tensor(0.2298)
+Training epoch 40
+Error tensor(0.2223)
+Training epoch 60
+Error tensor(0.2180)
+Training epoch 80
+Error tensor(0.2193)
+Training epoch 100
+Error tensor(0.2163)
+Training epoch 120
+Error tensor(0.2110)
+Training epoch 140
+Error tensor(0.2036)
+Training epoch 160
+Error tensor(0.1912)
+Training epoch 180
+Error tensor(0.1845)
+Training epoch 200
+Error tensor(0.1703)
+0.030483378
+Running experiment with 50 lag...
+Training epoch 1
+Error tensor(0.4668)
+Training epoch 20
+Error tensor(0.2277)
+Training epoch 40
+Error tensor(0.2186)
+Training epoch 60
+Error tensor(0.2122)
+Training epoch 80
+Error tensor(0.2070)
+Training epoch 100
+Error tensor(0.2013)
+Training epoch 120
+Error tensor(0.1958)
+Training epoch 140
+Error tensor(0.1862)
+Training epoch 160
+Error tensor(0.1773)
+Training epoch 180
+Error tensor(0.1637)
+Training epoch 200
+Error tensor(0.1565)
+0.027885059
+Running experiment with 60 lag...
+Training epoch 1
+Error tensor(0.4649)
+Training epoch 20
+Error tensor(0.2274)
+Training epoch 40
+Error tensor(0.2215)
+Training epoch 60
+Error tensor(0.2014)
+Training epoch 80
+Error tensor(0.1910)
+Training epoch 100
+Error tensor(0.1823)
+Training epoch 120
+Error tensor(0.1780)
+Training epoch 140
+Error tensor(0.1701)
+Training epoch 160
+Error tensor(0.1609)
+Training epoch 180
+Error tensor(0.1534)
+Training epoch 200
+Error tensor(0.1483)
+0.027122714
+Running experiment with 75 lag...
+Training epoch 1
+Error tensor(0.4727)
+Training epoch 20
+Error tensor(0.2312)
+Training epoch 40
+Error tensor(0.2188)
+Training epoch 60
+Error tensor(0.2166)
+Training epoch 80
+Error tensor(0.2112)
+Training epoch 100
+Error tensor(0.2056)
+Training epoch 120
+Error tensor(0.1933)
+Training epoch 140
+Error tensor(0.1845)
+Training epoch 160
+Error tensor(0.1757)
+Training epoch 180
+Error tensor(0.1685)
+Training epoch 200
+Error tensor(0.1659)
+0.029719204
+Running experiment with 100 lag...
+Training epoch 1
+Error tensor(0.4790)
+Training epoch 20
+Error tensor(0.2249)
+Training epoch 40
+Error tensor(0.2163)
+Training epoch 60
+Error tensor(0.2148)
+Training epoch 80
+Error tensor(0.2155)
+Training epoch 100
+Error tensor(0.2146)
+Training epoch 120
+Error tensor(0.2073)
+Training epoch 140
+Error tensor(0.1983)
+Training epoch 160
+Error tensor(0.1891)
+Training epoch 180
+Error tensor(0.1658)
+Training epoch 200
+Error tensor(0.1527)
+0.028168328
